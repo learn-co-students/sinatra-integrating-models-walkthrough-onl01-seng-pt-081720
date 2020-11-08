@@ -7,8 +7,11 @@ class App < Sinatra::Base
   end
 
   post '/' do
-    text_from_user = params[:user_text]
-
+    #instance saved to an instance variable, allows us to call it and its methods from results.erb
+    @analyzed_text = TextAnalyzer.new(params[:user_text])
+    #we are raking data from params and feeding it to a new 
+    #instancee of the TextAnalyzer class:
+    # @analyzed_text = TextAnalyzer.new(text_from_user
     erb :results
   end
 end
